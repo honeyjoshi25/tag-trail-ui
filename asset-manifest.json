@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/tag-trail-ui/static/css/main.52e3258c.css",
-    "main.js": "/tag-trail-ui/static/js/main.5ddbe5d7.js",
+    "main.js": "/tag-trail-ui/static/js/main.f194498f.js",
     "index.html": "/tag-trail-ui/index.html",
     "main.52e3258c.css.map": "/tag-trail-ui/static/css/main.52e3258c.css.map",
-    "main.5ddbe5d7.js.map": "/tag-trail-ui/static/js/main.5ddbe5d7.js.map"
+    "main.f194498f.js.map": "/tag-trail-ui/static/js/main.f194498f.js.map"
   },
   "entrypoints": [
     "static/css/main.52e3258c.css",
-    "static/js/main.5ddbe5d7.js"
+    "static/js/main.f194498f.js"
   ]
 }
