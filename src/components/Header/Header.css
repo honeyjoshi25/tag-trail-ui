@@ -1,0 +1,15 @@
+.header {
+  height: 60px;
+  color: #5e6278;
+  background-color: #ffff;
+  border-bottom: 0.5px solid #eff2f5;
+  /* flex-basis: 100%; */
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+}
+.headerTitle{
+    color: #181C32;
+    text-decoration: none;
+}

@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Poppins, Helvetica, "sans-serif" !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* background-color: #c7e5f7; */
+  background-color: #f5f8fa;
+}
+
+code {
+  font-family: Poppins, Helvetica, "sans-serif";
+}
+
+.bor {
+  border: 2px solid red;
+}
+
+.muiContainedBtn {
+  color: #ffffff !important;
+  border-color: #009ef7 !important;
+  background-color: #009ef7 !important;
+  font-family: Poppins, Helvetica, "sans-serif" !important;
+  text-transform: capitalize !important;
+  box-shadow: none !important;
+}
+.muiOutlinedBtn {
+  color: #009ef7 !important;
+  border-color: #f1faff !important;
+  background-color: #f1faff !important;
+  font-family: Poppins, Helvetica, "sans-serif" !important;
+  text-transform: capitalize !important;
+  box-shadow: none !important;
+}
+.MuiButtonBase-root.MuiButton-root {
+  text-transform: capitalize !important;
+}
+.card{
+  background-color: #ffffff;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+.link{
+  text-decoration: none;
+  color: #009EF7;
+}
+
+.MuiInputLabel-root{
+  font-family: Poppins, Helvetica, "sans-serif" !important;
+}
+.MuiButtonBase-root.MuiMenuItem-root {
+  font-size: 0.8rem !important;
+  color: #5e6278 !important;
+  font-family: Poppins, Helvetica, "sans-serif" !important;
+}
+.MuiButtonBase-root.MuiMenuItem-root:hover {
+  background-color: #f1faff !important;
+  color: #009ef7 !important;
+}
+.MuiTypography-root{
+  font-family: Poppins, Helvetica, "sans-serif" !important;
+}
+.homePostDesc {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

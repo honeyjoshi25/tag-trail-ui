@@ -1,0 +1,22 @@
+.login {
+  height: 100vh;
+  background-color: #181c32 !important;
+}
+.loginCard h5 {
+  color: #181c32;
+}
+.loginCard span {
+  font-size: 13px;
+}
+
+@media only screen and (max-width: 600px) {
+  .loginCard {
+    width: 100% !important;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1300px) {
+  .loginCard {
+    width: 50% !important;
+  }
+}

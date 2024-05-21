@@ -1,0 +1,29 @@
+.formModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  background-color: white;
+  box-shadow: 24;
+  overflow: hidden;
+}
+
+.formModalHeader{
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: white;
+}
+
+.formModalHeader span {
+  cursor: pointer;
+  color: #a1a5b7;
+  height: 1.75rem;
+  width: 1.75rem;
+}
+.formModalHeader span:hover {
+  color: #009ef7;
+}
+
+
