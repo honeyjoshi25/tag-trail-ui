@@ -7,12 +7,11 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
-import {Menu,MenuItem} from "@material-ui/core";
+import { Menu, MenuItem } from "@material-ui/core";
 import { Logout } from "@mui/icons-material";
 import { Divider } from "@mui/material";
-import {Tooltip} from "@mui/material";
-import {ListItemIcon} from "@mui/material";
-
+import { Tooltip } from "@mui/material";
+import { ListItemIcon } from "@mui/material";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -39,6 +38,7 @@ export const Header = () => {
     }
 
     setUser(JSON.parse(localStorage.getItem("profile")));
+    // eslint-disable-next-line
   }, [location]);
 
   const logout = () => {
@@ -138,7 +138,10 @@ export const Header = () => {
                 >
                   {user?.result.name}
                 </span>
-                <span style={{ fontSize: "13px", color: "#A1A5B7" }} className="ms-3">
+                <span
+                  style={{ fontSize: "13px", color: "#A1A5B7" }}
+                  className="ms-3"
+                >
                   {user?.result.email}
                 </span>
               </div>
