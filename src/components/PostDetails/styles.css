@@ -1,0 +1,8 @@
+.commentsInnerContainer {
+  height: 200px;
+}
+.media {
+  border-radius: 20px;
+  object-fit: cover;
+  height: 350px;
+}

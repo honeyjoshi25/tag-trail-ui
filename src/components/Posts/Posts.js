@@ -1,13 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import "./Styles.js";
-import { Grid, CircularProgress } from "@material-ui/core";
+import { Grid, CircularProgress } from "@mui/material";
 import { Post } from "./Post/Post";
-import useStyles from "./Styles";
+import "./styles.css";
 
 export const Posts = ({ setCurrentId, handleOpen }) => {
   const { posts, isLoading } = useSelector((state) => state.posts);
-  const classes = useStyles();
 
   if (!posts?.length && !isLoading)
     return (
@@ -23,7 +21,7 @@ export const Posts = ({ setCurrentId, handleOpen }) => {
         </>
       ) : (
         <Grid
-          className={classes.Container}
+          className="d-flex align-items-center flex-wrap"
           container
           alignItems="stretch"
           spacing={3}

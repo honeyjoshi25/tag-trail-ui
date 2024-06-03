@@ -1,10 +1,5 @@
 import "./App.css";
-import {
-  HashRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+import { HashRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Home } from "./components/Home/Home";
 import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
@@ -14,7 +9,7 @@ import ProtectedRoutes from "./ProtectedRouts";
 function App() {
   return (
     <div className="App">
-      <Router basename="/tag-trail-ui">
+      <HashRouter>
         <Routes>
           <Route path="/" element={<ProtectedRoutes />}>
             <Route path="/" element={<Navigate replace to="/posts" />} />
@@ -25,7 +20,7 @@ function App() {
           <Route path="/auth" element={<Login />} />
           <Route path="/signUp" element={<Register />} />
         </Routes>
-      </Router>
+      </HashRouter>
     </div>
   );
 }

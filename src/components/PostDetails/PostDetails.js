@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { Typography, CircularProgress, Divider } from "@material-ui/core/";
+import { Typography, CircularProgress, Divider } from "@mui/material";
 import moment from "moment";
-import useStyles from "./styles";
+import "./styles.css";
 import { getPost, getPostsBySearch } from "../../Redux/Actions/Posts_Actions";
 import { Comments } from "./Comments";
 import { Header } from "../Header/Header";
@@ -12,7 +12,6 @@ export const PostDetails = () => {
   const { post, posts, isLoading } = useSelector((state) => state.posts);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const classes = useStyles();
   const { id } = useParams();
 
   useEffect(() => {
@@ -83,7 +82,7 @@ export const PostDetails = () => {
           </div>
           <div className="col-lg-4 col-12">
             <img
-              className={classes.media}
+              className="media w-100"
               src={
                 post.selectedFiles ||
                 "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
@@ -93,12 +92,12 @@ export const PostDetails = () => {
           </div>
         </div>
         {!!recommendedPosts.length && (
-          <div className={classes.section}>
+          <div>
             <Typography gutterBottom variant="h6" className="fw-bold">
               You might also like
             </Typography>
             <Divider />
-            <div className={classes.recommendedPosts}>
+            <div className="d-flex flex-column flex-md-row flex-wrap">
               {recommendedPosts.map(
                 ({ title, name, message, likes, selectedFiles, _id }) => (
                   <div

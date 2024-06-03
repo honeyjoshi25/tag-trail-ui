@@ -4,10 +4,10 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Avatar } from "@material-ui/core";
+import { Avatar } from "@mui/material";
 import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
-import { Menu, MenuItem } from "@material-ui/core";
+import { Menu, MenuItem } from "@mui/material";
 import { Logout } from "@mui/icons-material";
 import { Divider } from "@mui/material";
 import { Tooltip } from "@mui/material";
@@ -159,27 +159,6 @@ export const Header = () => {
             </MenuItem>
           </Menu>
         </div>
-
-        {/* <>
-          <Avatar
-            alt={user.result.name}
-            src={user.result.imageUrl}
-            style={{
-              marginRight: "10px",
-              height: "30px",
-              width: "30px",
-            }}
-          >
-            {user?.result.name.charAt(0)}
-          </Avatar>
-          <Typography style={{ marginRight: "10px" }}>
-            {user?.result.name}
-          </Typography>
-
-          <Button color="inherit" onClick={logout} className="muiContainedBtn">
-            Logout
-          </Button>
-        </> */}
       </div>
     </div>
   );

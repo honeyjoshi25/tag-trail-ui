@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Box, Modal, TextField } from "@material-ui/core";
+import { Box, Modal, TextField } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import "./Form.css";
@@ -7,8 +7,8 @@ import { useState } from "react";
 import FileBase from "react-file-base64";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost, updatePost } from "../../Redux/Actions/Posts_Actions";
-import ChipInput from "material-ui-chip-input";
-import { IconButton } from "@material-ui/core";
+import { MuiChipsInput } from "mui-chips-input";
+import { IconButton } from "@mui/material";
 import { Close } from "@mui/icons-material";
 
 export const Form = ({ currentId, setCurrentId, open, handleClose }) => {
@@ -44,6 +44,11 @@ export const Form = ({ currentId, setCurrentId, open, handleClose }) => {
       tags: data.tags.filter((tag) => tag !== chipToDelete),
     });
   };
+
+  const handletagChange = (newChips) => {
+    setData({ ...data, tags: newChips });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -52,8 +57,9 @@ export const Form = ({ currentId, setCurrentId, open, handleClose }) => {
     } else {
       dispatch(createPost({ ...data, name: user?.result?.name }));
     }
-    handleClear();
-    window.location.reload();
+    handleClose();
+    // handleClear();
+    // window.location.reload();
   };
   const handleClear = () => {
     setCurrentId(null);
@@ -86,7 +92,7 @@ export const Form = ({ currentId, setCurrentId, open, handleClose }) => {
                 <Close fontSize="inherit" />
               </IconButton>
             </div>
-            <div className="p-4">
+            <div className="p-4 d-flex flex-column">
               <TextField
                 name="title"
                 variant="outlined"
@@ -116,15 +122,12 @@ export const Form = ({ currentId, setCurrentId, open, handleClose }) => {
               className='mb-3'
               onChange={handleChange}
             /> */}
-              <ChipInput
-                name="tags"
-                variant="outlined"
-                label="Tags"
-                fullWidth
+
+              <MuiChipsInput
                 value={data.tags}
+                onChange={handletagChange}
                 className="mb-3"
-                onAdd={(chip) => handleAddChip(chip)}
-                onDelete={(chip) => handleDeleteChip(chip)}
+                placeholder="Tag"
               />
 
               <FileBase

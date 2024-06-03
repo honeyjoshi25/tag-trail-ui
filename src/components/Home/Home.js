@@ -5,8 +5,8 @@ import { Form } from "../Form/Form";
 import { useDispatch } from "react-redux";
 import { getPostsBySearch } from "../../Redux/Actions/Posts_Actions";
 import { Paginate } from "../Pagination/Paginate";
-import { TextField } from "@material-ui/core";
-import ChipInput from "material-ui-chip-input";
+import { TextField } from "@mui/material";
+import { MuiChipsInput } from "mui-chips-input";
 import { useNavigate, useLocation } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { Header } from "../Header/Header";
@@ -28,9 +28,10 @@ export const Home = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleAdd = (tag) => setTags([...tags, tag]);
-  const handleDelete = (tagToDelete) =>
-    setTags(tags.filter((tags) => tags !== tagToDelete));
+  const handleChange = (newChips) => {
+    setTags(newChips);
+  };
+
   const handleSubmit = () => {
     if (search.trim() || tags) {
       dispatch(getPostsBySearch({ search, tags: tags.join(",") }));
@@ -57,14 +58,12 @@ export const Home = () => {
               className="mb-3"
               onChange={(e) => setSearch(e.target.value)}
             />
-            <ChipInput
+
+            <MuiChipsInput
               value={tags}
-              onAdd={handleAdd}
-              onDelete={handleDelete}
-              label="Search Tags"
-              variant="outlined"
-              fullWidth
+              onChange={handleChange}
               className="mb-3"
+              placeholder="Search Tag"
             />
             <Button
               variant="contained"
@@ -74,24 +73,30 @@ export const Home = () => {
             >
               Submit
             </Button>
-            <Button variant="outlined" className="muiOutlinedBtn" onClick={handleOpen}>
+            <Button
+              variant="outlined"
+              className="muiOutlinedBtn"
+              onClick={handleOpen}
+            >
               Create Post
             </Button>
-            <Form currentId={currentId} setCurrentId={setCurrentId} open={open} handleClose={handleClose}/>
+            <Form
+              currentId={currentId}
+              setCurrentId={setCurrentId}
+              open={open}
+              handleClose={handleClose}
+            />
           </div>
-         
         </div>
 
         <div className="appRight d-flex flex-column col-12 col-lg-9 mt-3 mt-lg-0">
-          <Posts setCurrentId={setCurrentId} handleOpen={handleOpen}/>
+          <Posts setCurrentId={setCurrentId} handleOpen={handleOpen} />
           {!searchQuery && !tags.length && (
-          <div className="pagination mt-5 d-flex justify-content-center ">
-            <Paginate page={page} />
-          </div>
-        )}
+            <div className="pagination mt-5 d-flex justify-content-center ">
+              <Paginate page={page} />
+            </div>
+          )}
         </div>
-
-       
       </div>
     </div>
   );

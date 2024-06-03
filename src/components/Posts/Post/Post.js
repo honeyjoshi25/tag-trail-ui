@@ -1,5 +1,5 @@
-import React from 'react'
-import useStyles from './styles'
+import React from "react";
+import "./styles.css";
 import {
   Card,
   CardActions,
@@ -7,66 +7,64 @@ import {
   CardMedia,
   Button,
   Typography,
-} from '@material-ui/core/'
-import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt'
-import DeleteIcon from '@material-ui/icons/Delete'
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
-import moment from 'moment'
-import { useDispatch } from 'react-redux'
-import { deletePost, likePost } from '../../../Redux/Actions/Posts_Actions'
-import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined'
-import { useNavigate } from 'react-router-dom'
+} from "@mui/material";
+import moment from "moment";
+import { useDispatch } from "react-redux";
+import { deletePost, likePost } from "../../../Redux/Actions/Posts_Actions";
+import { useNavigate } from "react-router-dom";
+import { ThumbUp, ThumbUpOffAlt, Delete, MoreVert } from "@mui/icons-material";
 
-export const Post = ({ post, setCurrentId,handleOpen }) => {
-  const dispatch = useDispatch()
-  const classes = useStyles()
-  const navigate = useNavigate()
-  const user = JSON.parse(localStorage.getItem('profile'))
+export const Post = ({ post, setCurrentId, handleOpen }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("profile"));
   const onClick = () => {
-    navigate(`/posts/${post._id}`)
-    window.location.reload()
-  }
+    navigate(`/posts/${post._id}`);
+    window.location.reload();
+  };
   const Likes = () => {
     if (post.likes.length > 0) {
-      return post.likes.find(
-        (like) => like === (user?.result?.googleId || user?.result?._id),
-      ) ? (
+      return post.likes.find((like) => like === user?.result?._id) ? (
         <>
-          <ThumbUpAltIcon fontSize="small" />
+          <ThumbUp fontSize="small" />
           &nbsp;
           {post.likes.length > 2
             ? `You and ${post.likes.length - 1} others`
-            : `${post.likes.length} like${post.likes.length > 1 ? 's' : ''}`}
+            : `${post.likes.length} like${post.likes.length > 1 ? "s" : ""}`}
         </>
       ) : (
         <>
-          <ThumbUpAltOutlined fontSize="small" />
-          &nbsp;{post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}
+          <ThumbUp fontSize="small" />
+          &nbsp;{post.likes.length} {post.likes.length === 1 ? "Like" : "Likes"}
         </>
-      )
+      );
     }
 
     return (
       <>
-        <ThumbUpAltOutlined fontSize="small" />
+        <ThumbUpOffAlt fontSize="small" />
         &nbsp;Like
       </>
-    )
-  }
+    );
+  };
 
   return (
     <div>
-      <Card className={classes.card} raised elevation={6}>
+      <Card
+        className="postcard d-flex flex-column justify-content-between position-relative"
+        raised
+        elevation={6}
+      >
         <CardMedia
-          className={classes.media}
+          className="postMedia"
           image={
             post.selectedFiles ||
-            'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'
+            "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
           }
           title={post.title}
           onClick={onClick}
         />
-        <div className={classes.overlay}>
+        <div className="overlay">
           <Typography variant="h6">{post.name}</Typography>
           <Typography variant="body2">
             {moment(post.createdAt).fromNow()}
@@ -74,57 +72,59 @@ export const Post = ({ post, setCurrentId,handleOpen }) => {
         </div>
         {(user?.result?.googleId === post?.creator ||
           user?.result?._id === post?.creator) && (
-          <div className={classes.overlay2}>
+          <div className="overlay2">
             <Button
-              style={{ color: 'white' }}
+              style={{ color: "white" }}
               size="small"
-              onClick={() => {setCurrentId(post._id);handleOpen()}}
+              onClick={() => {
+                setCurrentId(post._id);
+                handleOpen();
+              }}
             >
-              <MoreHorizIcon fontSize="medium" />
+              <MoreVert fontSize="medium" />
             </Button>
           </div>
         )}
 
-        <div className={classes.details}>
+        <div className="details d-flex justify-content-between m-3">
           <Typography variant="body2" color="textSecondary" component="h2">
             {post.tags.map((tag) => `#${tag} `)}
           </Typography>
         </div>
-        <Typography
-          className={classes.title}
-          gutterBottom
-          variant="h5"
-          component="h2"
-        >
+        <Typography className="title" gutterBottom variant="h5" component="h2">
           {post.title}
         </Typography>
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p" className='homePostDesc'>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            className="homePostDesc"
+          >
             {post.message}
           </Typography>
         </CardContent>
-        <CardActions className={classes.cardActions}>
+        <CardActions className="cardActions d-flex justify-content-between">
           <Button
             size="small"
             color="primary"
             disabled={!user?.result}
             onClick={() => dispatch(likePost(post._id))}
           >
-            {/* <ThumbUpAltIcon fontSize="small" /> Like {post.likes}{' '} */}
             <Likes />
           </Button>
           {(user?.result?.googleId === post?.creator ||
             user?.result?._id === post?.creator) && (
             <Button
               size="small"
-              color="secondary"
+              color="error"
               onClick={() => dispatch(deletePost(post._id))}
             >
-              <DeleteIcon fontSize="small" /> Delete
+              <Delete fontSize="small" /> Delete
             </Button>
           )}
         </CardActions>
       </Card>
     </div>
-  )
-}
+  );
+};

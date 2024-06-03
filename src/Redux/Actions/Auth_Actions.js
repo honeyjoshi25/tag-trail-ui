@@ -1,23 +1,24 @@
-import * as api from '../../api/index'
-import { AUTH } from '../Constants/ActionTypes'
+import * as api from "../../api/index";
+import { AUTH } from "../Constants/ActionTypes";
 
 export const signIn = (values, navigate) => async (dispatch) => {
   try {
-    const { data } = await api.SignIn(values)
-    dispatch({ type: AUTH, data })
-    navigate('/')
+    const { data } = await api.SignIn(values);
+    dispatch({ type: AUTH, data });
+    navigate("/");
   } catch (error) {
-    console.log(error.response.data.message)
-    
+    console.log(error.response.data.message);
+    throw new Error(error.response.data.message);
   }
-}
+};
 
 export const signUp = (values, navigate) => async (dispatch) => {
   try {
-    const { data } = await api.SignUp(values)
-    dispatch({ type: AUTH, data })
-    navigate('/')
+    const { data } = await api.SignUp(values);
+    dispatch({ type: AUTH, data });
+    navigate("/auth");
   } catch (error) {
-    console.log(error)
+    console.log(error);
+    throw new Error(error.response.data.message);
   }
-}
+};
